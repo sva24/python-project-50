@@ -2,9 +2,6 @@
 install: #  установка poetry
 	poetry install
 
-brain-games: # запустить проект
-	poetry run brain-games
-
 build: # билд)
 	poetry build
 
