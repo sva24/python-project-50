@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Вычислитель отличий"
 authors = ["Владимир Силин <sva@itx24.ru>"]
 readme = "README.md"
-
+packages = [
+  { include = "gendiff" },
+]
 [tool.poetry.dependencies]
 python = "^3.10"
 
@@ -12,3 +14,7 @@ python = "^3.10"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
