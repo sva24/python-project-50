@@ -12,6 +12,6 @@ package-install: # установка пакета из ОС
 	python3 -m pip install --user dist/*.whl
 
 lint: # запуск линтера
-	poetry run flake8 brain_games
+	poetry run flake8 gendiff
 reinstall: # пересборка пакета
 	python3 -m pip install --user --force-reinstall dist/*.whl
