@@ -1,17 +1,28 @@
 # Makefile
-install: #  установка poetry
+install:
 	poetry install
 
-build: # билд)
+build:
 	poetry build
 
-publish: #  отладка публикаций без добавления в каталог PyPI
+publish:
 	poetry publish --dry-run
 
-package-install: # установка пакета из ОС
+package-install:
 	python3 -m pip install --user dist/*.whl
 
-lint: # запуск линтера
+lint:
 	poetry run flake8 gendiff
-reinstall: # пересборка пакета
+reinstall:
 	python3 -m pip install --user --force-reinstall dist/*.whl
+test-coverage:
+	poetry run pytest --cov=hexlet_python_package --cov-report xml
+selfcheck:
+	poetry check
+
+check: selfcheck test lint
+
+build: check
+	poetry build
+
+.PHONY: install test lint selfcheck check build
