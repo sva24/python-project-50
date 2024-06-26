@@ -1,0 +1,6 @@
+  hosts: tests
+  
+  ftpserver: 8.8.8.8
+  ftpuser: user
+  ftppass: pass
+  port: 21

@@ -1,0 +1,10 @@
+{
+  - ftppass: pass
+  + ftppass: password
+  - ftpserver: 8.8.8.8
+  + ftpserver: 1.1.1.1
+    ftpuser: user
+  - hosts: tests
+  + hosts: prod
+    port: 21
+}

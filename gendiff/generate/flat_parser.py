@@ -1,13 +1,10 @@
-import json
-
-
-def generate_diff(file_path1: str, file_path2: str) -> str:
+def generate_diff(file1: dict, file2: dict) -> str:
     """
     Сравнивает содержимое двух файлов и генерирует отчет
      об изменениях во втором файле относительно первого.
 
-    :param file_path1: Путь к первому файлу.
-    :param file_path2: Путь ко второму файлу.
+    :param file1 Первый файл.
+    :param file2: Второй файл.
     :return: Строка, представляющая разницу между двумя файлами в формате:
 
           - key1: value1
@@ -22,8 +19,7 @@ def generate_diff(file_path1: str, file_path2: str) -> str:
         Отсутствие плюса или минуса говорит о том, что ключ есть в обоих файлах
          и его значения совпадают
     """
-    file1 = json.load(open(file_path1))
-    file2 = json.load(open(file_path2))
+
     diff_str = "{\n"
 
     keys = file1.keys() | file2.keys()
