@@ -5,6 +5,9 @@ from yaml.loader import SafeLoader
 
 
 def load_file(file_path: str) -> str:
+    """
+    Загружает содержимое файла в зависимости от его расширения.
+    """
     ext = os.path.splitext(file_path)[1]
     if ext == '.json':
         with open(file_path, 'r') as file:
@@ -18,7 +21,7 @@ def load_file(file_path: str) -> str:
 
 def load_files(file1_path: str, file2_path: str) -> tuple:
     """
-    Загружает данные из двух файлов (JSON или YAML) и возвращает их в виде кортежа.
+    Загружает данные из двух файлов и возвращает их в виде кортежа.
 
     :param file1_path: Путь к первому файлу.
     :param file2_path: Путь ко второму файлу.

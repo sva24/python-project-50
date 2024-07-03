@@ -1,5 +1,5 @@
 def make_stylish(value):
-    def format_value(val, depth):
+    def normalize(val, depth):
         if val is None:
             return 'null'
         if isinstance(val, bool):
@@ -20,16 +20,16 @@ def make_stylish(value):
                 if type_ == 'nested':
                     lines.append(f'{current_indent}    {key}: {iter_(val["value"], depth + 1)}')
                 elif type_ == 'changed':
-                    lines.append(f'{current_indent}  - {key}: {format_value(val["value1"], depth)}')
-                    lines.append(f'{current_indent}  + {key}: {format_value(val["value2"], depth)}')
+                    lines.append(f'{current_indent}  - {key}: {normalize(val["value1"], depth)}')
+                    lines.append(f'{current_indent}  + {key}: {normalize(val["value2"], depth)}')
                 elif type_ == 'added':
-                    lines.append(f'{current_indent}  + {key}: {format_value(val["value"], depth)}')
+                    lines.append(f'{current_indent}  + {key}: {normalize(val["value"], depth)}')
                 elif type_ == 'deleted':
-                    lines.append(f'{current_indent}  - {key}: {format_value(val["value"], depth)}')
+                    lines.append(f'{current_indent}  - {key}: {normalize(val["value"], depth)}')
                 elif type_ == 'unchanged':
-                    lines.append(f'{current_indent}    {key}: {format_value(val["value"], depth)}')
+                    lines.append(f'{current_indent}    {key}: {normalize(val["value"], depth)}')
             else:
-                lines.append(f'{current_indent}    {key}: {format_value(val, depth)}')
+                lines.append(f'{current_indent}    {key}: {normalize(val, depth)}')
 
         lines.append(current_indent + "}")
         return '\n'.join(lines)
