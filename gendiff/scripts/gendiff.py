@@ -1,25 +1,14 @@
-import argparse
-from gendiff.generate import generate_diff
-from gendiff.generate import load_json
-from gendiff.generate import load_yml
-import os
+from gendiff import build_diff
+from gendiff.generate import load_files
+from gendiff.parser import create_parser
+from gendiff.formatter import create_formate
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description='Compares two configuration files and shows a difference.')
-    parser.add_argument('-f', '--format', help='set format of output',
-                        required=False)
-    parser.add_argument('first_file', type=str)
-    parser.add_argument('second_file', type=str)
-
-    args = parser.parse_args()
-
-    if os.path.splitext(args.first_file)[1] == '.json':
-        file1, file2 = load_json(args.first_file, args.second_file)
-    else:
-        file1, file2 = load_yml(args.first_file, args.second_file)
-    print(generate_diff(file1, file2))
+    formatter, file1_path, file2_path = create_parser()
+    file1, file2 = load_files(file1_path, file2_path)
+    diff = build_diff(file1, file2)
+    print(create_formate(formatter, diff))
 
 
 if __name__ == "__main__":

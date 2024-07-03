@@ -1,6 +1,8 @@
 import os
 import json
-from gendiff import generate_diff
+from gendiff import build_diff
+from gendiff import make_stylish
+
 
 def test_flat_json():
     expectation_path = os.path.join('tests', 'fixtures', 'expectation_json.txt')
@@ -11,5 +13,6 @@ def test_flat_json():
         expectation = file.read()
     file1 = json.load(open(file1_path))
     file2 = json.load(open(file2_path))
+    diff = build_diff(file1, file2)
 
-    assert generate_diff(file1, file2) == expectation
+    assert make_stylish(diff) == expectation

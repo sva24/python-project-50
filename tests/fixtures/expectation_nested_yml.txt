@@ -1,0 +1,20 @@
+{
+  - gather_facts: false
+  + gather_facts: true
+  - hosts: tests
+  + hosts: prod
+    tasks: {
+        name: backup-file create
+        routeros_command: {
+            commands: export file={{ file_name }}.rsc
+        }
+    }
+    vars: {
+        ftppass_var: password
+      - ftpserver_var: 8.8.8.8
+      + ftpserver_var: 1.1.1.1
+        ftpuser_var: user
+      - port_var: 21
+      + port_var: 22
+    }
+}
