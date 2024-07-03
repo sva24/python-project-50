@@ -1,4 +1,5 @@
 from gendiff import make_stylish
+from gendiff import make_plain
 
 
 def create_formate(formatter, diff):
@@ -8,3 +9,5 @@ def create_formate(formatter, diff):
     """
     if formatter == 'stylish':
         return make_stylish(diff)
+    elif formatter == 'plain':
+        return make_plain(diff)

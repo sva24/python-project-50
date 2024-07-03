@@ -29,9 +29,11 @@ def build_diff(file1: dict, file2: dict) -> dict:
         elif key not in file2:
             result_diff[key] = {'type': 'deleted', 'value': value1}
         elif isinstance(value1, dict) and isinstance(value2, dict):
-            result_diff[key] = {'type': 'nested', 'value': build_diff(value1, value2)}
+            result_diff[key] = {'type': 'nested',
+                                'value': build_diff(value1, value2)}
         elif file1[key] == file2[key]:
             result_diff[key] = {'type': 'unchanged', 'value': value1}
         else:
-            result_diff[key] = {'type': 'changed', 'value1': value1, 'value2': value2}
+            result_diff[key] = {'type': 'changed',
+                                'value1': value1, 'value2': value2}
     return result_diff
