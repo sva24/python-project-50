@@ -1,6 +1,6 @@
 import os
 import json
-from gendiff import generate_diff
+from gendiff import build_diff
 from gendiff import make_stylish
 from gendiff import make_json
 
@@ -14,7 +14,7 @@ def test_flat_json():
         expectation = file.read()
     file1 = json.load(open(file1_path))
     file2 = json.load(open(file2_path))
-    diff = generate_diff(file1, file2)
+    diff = build_diff(file1, file2)
 
     assert make_stylish(diff) == expectation
 
@@ -28,6 +28,6 @@ def test_formatter_json():
         expectation = file.read()
     file1 = json.load(open(file1_path))
     file2 = json.load(open(file2_path))
-    diff = generate_diff(file1, file2)
+    diff = build_diff(file1, file2)
 
     assert make_json(diff) == expectation

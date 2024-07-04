@@ -1,7 +1,7 @@
 import os
 import yaml
 from yaml import SafeLoader
-from gendiff import generate_diff
+from gendiff import build_diff
 from gendiff import make_stylish
 
 
@@ -16,5 +16,5 @@ def test_yml():
     file1 = yaml.load(open(file1_path), Loader=SafeLoader)
     file2 = yaml.load(open(file2_path), Loader=SafeLoader)
 
-    diff = generate_diff(file1, file2)
+    diff = build_diff(file1, file2)
     assert make_stylish(diff) == expectation

@@ -1,4 +1,4 @@
-def generate_diff(file1: dict, file2: dict) -> dict:
+def build_diff(file1: dict, file2: dict) -> dict:
     """
     Сравнивает содержимое двух файлов и генерирует отчет
     об изменениях во втором файле относительно первого.
@@ -30,7 +30,7 @@ def generate_diff(file1: dict, file2: dict) -> dict:
             result_diff[key] = {'type': 'deleted', 'value': value1}
         elif isinstance(value1, dict) and isinstance(value2, dict):
             result_diff[key] = {'type': 'nested',
-                                'value': generate_diff(value1, value2)}
+                                'value': build_diff(value1, value2)}
         elif file1[key] == file2[key]:
             result_diff[key] = {'type': 'unchanged', 'value': value1}
         else:
