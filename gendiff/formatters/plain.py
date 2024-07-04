@@ -11,26 +11,16 @@ def normalize(val: dict) -> str:
     return f"'{val}'" if isinstance(val, str) else str(val)
 
 
-def iter_(current_value, path):
+def process_diff(current_value: dict, path: str) -> str:
+    """
+    Обрабатывает разницу и возвращает строки с изменениями в формате plain.
+    """
     lines = []
 
     for key, val in sorted(current_value.items()):
         nested_path = f"{path}{key}"
         if isinstance(val, dict) and 'type' in val:
-            type_ = val['type']
-            if type_ == 'nested':
-                lines.append(iter_(val["value"], f"{nested_path}."))
-            elif type_ == 'changed':
-                value1 = normalize(val["value1"])
-                value2 = normalize(val["value2"])
-                lines.append(f"Property '{nested_path}' was updated."
-                             f" From {value1} to {value2}")
-            elif type_ == 'added':
-                value = normalize(val["value"])
-                lines.append(f"Property '{nested_path}'"
-                             f" was added with value: {value}")
-            elif type_ == 'deleted':
-                lines.append(f"Property '{nested_path}' was removed")
+            process_type(val, lines, nested_path)
         else:
             value = normalize(val)
             lines.append(f"Property '{nested_path}'"
@@ -39,6 +29,28 @@ def iter_(current_value, path):
     return '\n'.join(line for line in lines if line)
 
 
-def make_plain(value: dict) -> str:
+def process_type(val, lines, nested_path):
 
-    return iter_(value, '')
+    type_ = val['type']
+    if type_ == 'nested':
+        lines.append(process_diff(val["value"], f"{nested_path}."))
+    elif type_ == 'changed':
+        value1 = normalize(val["value1"])
+        value2 = normalize(val["value2"])
+        lines.append(f"Property '{nested_path}' was updated."
+                     f" From {value1} to {value2}")
+    elif type_ == 'added':
+        value = normalize(val["value"])
+        lines.append(f"Property '{nested_path}'"
+                     f" was added with value: {value}")
+    elif type_ == 'deleted':
+        lines.append(f"Property '{nested_path}' was removed")
+    return lines
+
+
+def make_plain(diff: dict) -> str:
+    """
+     Преобразует словарь с различиями в строку в формате plain
+    """
+
+    return process_diff(diff, '')
