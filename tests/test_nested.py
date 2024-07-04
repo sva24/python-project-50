@@ -3,7 +3,7 @@ import json
 import yaml
 from yaml import SafeLoader
 from gendiff import make_stylish
-from gendiff import build_diff
+from gendiff import generate_diff
 
 
 def test_nested_json():
@@ -17,7 +17,7 @@ def test_nested_json():
     file1 = json.load(open(file1_path))
     file2 = json.load(open(file2_path))
 
-    diff = build_diff(file1, file2)
+    diff = generate_diff(file1, file2)
     generated_output = make_stylish(diff)
 
     assert generated_output == expectation
@@ -34,7 +34,7 @@ def test_nested_yml():
     file1 = yaml.load(open(file1_path), Loader=SafeLoader)
     file2 = yaml.load(open(file2_path), Loader=SafeLoader)
 
-    diff = build_diff(file1, file2)
+    diff = generate_diff(file1, file2)
     generated_output = make_stylish(diff)
 
     assert generated_output == expectation
