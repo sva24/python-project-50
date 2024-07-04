@@ -4,3 +4,4 @@ from gendiff.files_loader import load_files
 from .formatters.plain import make_plain
 from .formatters.json import make_json
 from .generate.gen_diff import generate_diff
+from gendiff.formatter import create_formate
