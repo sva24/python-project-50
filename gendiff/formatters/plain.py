@@ -1,6 +1,12 @@
 def normalize(val: dict) -> str:
     """
     Нормализует значение для вывода в виде строки.
+
+    Args:
+        val (dict): Значение для нормализации.
+
+    Returns:
+        str: Нормализованная строка.
     """
     if val is None:
         return 'null'
@@ -14,6 +20,13 @@ def normalize(val: dict) -> str:
 def process_diff(current_value: dict, path: str) -> str:
     """
     Обрабатывает разницу и возвращает строки с изменениями в формате plain.
+
+    Args:
+        current_value (dict): Текущий словарь значений.
+        path (str): Путь для отслеживания изменений.
+
+    Returns:
+        str: Строки с изменениями в формате plain.
     """
     lines = []
 
@@ -30,6 +43,14 @@ def process_diff(current_value: dict, path: str) -> str:
 
 
 def process_type(val, lines, nested_path):
+    """
+    Обрабатывает тип изменений и добавляет их в список строк.
+
+    Args:
+        val (dict): Словарь с типом изменений.
+        lines (list): Список строк для добавления изменений.
+        nested_path (str): Вложенный путь для отслеживания изменений.
+    """
 
     type_ = val['type']
     if type_ == 'nested':
@@ -50,7 +71,12 @@ def process_type(val, lines, nested_path):
 
 def make_plain(diff: dict) -> str:
     """
-     Преобразует словарь с различиями в строку в формате plain
+    Преобразует словарь с различиями в строку в формате plain
+    Args:
+        diff (dict): Словарь с различиями.
+
+    Returns:
+        str: Строка в формате plain.
     """
 
     return process_diff(diff, '')

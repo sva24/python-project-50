@@ -4,12 +4,14 @@ import argparse
 def create_parser(argv=None):
     """
     Создает парсер аргументов командной строки
+    Args:
+        argv (list): Список аргументов командной строки. По умолчанию None.
 
-    :return:
-     Кортеж из трех элементов:
-        - str: Формат вывода результатов сравнения файлов
-        - str: Путь к первому файлу конфигурации.
-        - str: Путь ко второму файлу конфигурации.
+    Returns:
+        tuple: Кортеж из трех элементов:
+            - str: Формат вывода результатов сравнения файлов.
+            - str: Путь к первому файлу конфигурации.
+            - str: Путь ко второму файлу конфигурации.
     """
     parser = argparse.ArgumentParser(
         description='Compares two configuration files and shows a difference.')
