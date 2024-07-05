@@ -15,9 +15,9 @@
 Генерация отчета в виде plain text, stylish и json
 
 ## 🔨 Минимальные требования
-python >=3.10
-pytest-cov >= 5.0.0
-pyyaml >= 6.0.1
+python >=3.10  
+pytest-cov >= 5.0.0  
+pyyaml >= 6.0.1  
 
 ## 🛠️ Установка
 git clone https://github.com/sva24/python-project-50.git  
