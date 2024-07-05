@@ -21,10 +21,10 @@ pyyaml >= 6.0.1
 
 ## 🛠️ Установка
 git clone https://github.com/sva24/python-project-50.git  
-cd python-project-50
+cd python-project-50  
 make install  
 make build   
-make package-install
+make package-install  
 
 
 ## 💡 Запуск утилиты:
