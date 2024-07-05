@@ -15,7 +15,7 @@
 Генерация отчета в виде plain text, stylish и json
 
 ## 🔨 Минимальные требования
-python >=3.10  
+python >=3.10
 pytest-cov >= 5.0.0
 pyyaml >= 6.0.1
 
@@ -55,4 +55,19 @@ options:
 Запускает сравнение двух файлов с форматером 'json'. Выводит сравнение в формате JSON.
 
 
-## 📺 Запись демонстрации игр:
+## 📺 Запись демонстрации работы программы:
+
+## Плоские файлы JSON
+[![asciicast](https://asciinema.org/a/c2P7s1rGdb7qo5nNroghUrv3r.svg)](https://asciinema.org/a/c2P7s1rGdb7qo5nNroghUrv3r)
+
+##  Плоские файлы YAML
+[![asciicast](https://asciinema.org/a/lTi3WnUhmbEa00HIshMGqhTz6.svg)](https://asciinema.org/a/lTi3WnUhmbEa00HIshMGqhTz6)
+
+## Файлы JSON и YAML с вложенной структурой
+[![asciicast](https://asciinema.org/a/od3RZ3QppXcxK3Nu2WvwJ6dAK.svg)](https://asciinema.org/a/od3RZ3QppXcxK3Nu2WvwJ6dAK)
+
+## Плоский формат plain
+[![asciicast](https://asciinema.org/a/ESeW3HKqfBmzVlL0m0wCILrSG.svg)](https://asciinema.org/a/ESeW3HKqfBmzVlL0m0wCILrSG)
+
+## Формат JSON
+[![asciicast](https://asciinema.org/a/e9kauiqyzTr7Hok4YHmS5oDxV.svg)](https://asciinema.org/a/e9kauiqyzTr7Hok4YHmS5oDxV)
