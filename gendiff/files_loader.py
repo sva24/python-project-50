@@ -48,4 +48,3 @@ def load_files(file1_path: str, file2_path: str) -> tuple:
     except FileNotFoundError as e:
         print(f"Error: {e}")
         sys.exit(1)
-
