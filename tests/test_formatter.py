@@ -1,4 +1,3 @@
-import pytest
 import json
 import os
 from gendiff.formatter import create_formate
@@ -17,4 +16,3 @@ def test_create_formate_json():
     diff = build_diff(file1, file2)
     result = create_formate('json', diff)
     assert result == expectation
-
