@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import yaml
 from yaml.loader import SafeLoader
@@ -40,7 +41,10 @@ def load_files(file1_path: str, file2_path: str) -> tuple:
         tuple: Кортеж с данными из первого и второго файлов.
     """
 
-    file1 = load_file(file1_path)
-    file2 = load_file(file2_path)
-
-    return file1, file2
+    try:
+        file1 = load_file(file1_path)
+        file2 = load_file(file2_path)
+        return file1, file2
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+        sys.exit(1)

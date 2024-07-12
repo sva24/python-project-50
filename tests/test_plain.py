@@ -19,3 +19,20 @@ def test_nested_json():
     generated_output = make_plain(diff)
 
     assert generated_output == expectation
+
+
+def test_plain_json():
+    expectation_path = os.path.join('tests', 'fixtures', 'expectation_plain_flat.txt')
+    file1_path = os.path.join('tests', 'fixtures', 'file1.json')
+    file2_path = os.path.join('tests', 'fixtures', 'file2.json')
+
+    with open(expectation_path, "r") as file:
+        expectation = file.read()
+
+    file1 = json.load(open(file1_path))
+    file2 = json.load(open(file2_path))
+
+    diff = build_diff(file1, file2)
+    generated_output = make_plain(diff)
+
+    assert generated_output == expectation
