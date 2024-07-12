@@ -42,4 +42,3 @@ def test_load_files_yaml():
 def test_load_files_unsupported_format():
     with raises(ValueError):
         load_files('invalid_format.txt', 'invalid_format.txt')
-
